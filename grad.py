@@ -10,3 +10,9 @@ def momentum(w, dw, lr, gamma, v):
     v=gamma*v-lr*dw
     w=w+v
     return w,v
+h=np.zeros_like(w)
+eps=1e-8
+def adagrad(h, w, dw, lr):
+    h+=dw*dw
+    w=w-lr*(1/(np.sqrt(h)+eps))*dw
+    return w,h
